@@ -40,8 +40,7 @@ Verificar se o sistema retorna corretamente os dados de um aluno específico ao 
   ```
 
 ## **Resultado Obtido**
-*(Preencher após a execução do teste)*  
-Exemplo: O sistema retornou corretamente os dados do aluno.
+O sistema retornou corretamente os dados do aluno.
 
 ## **Pós-condição**
 O sistema permanece no mesmo estado, sem alterações nos dados.
