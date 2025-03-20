@@ -2,20 +2,20 @@ import requests
 import os 
 import dotenv
 import pytest
+import classes.EnvManager as env
 
 
-dotenv.load_dotenv()
+
+envs = env.EnvManager()
 
 
 # Essa classe é responsável por obter os dados do aluno e realizar as requisicoes que serao testadas
 class RequestData:
     def __init__(self):
-        self.id = os.getenv("ALUNO_ID")
-        self.base_url = os.getenv("BASE_URL")
+        self.id = envs.get_aluno_id()
+        self.base_url = envs.get_base_url()
         self.url = f"{self.base_url}/users/{self.id}"
-        self.headers = {
-            "Content-Type": "application/json"
-        }
+        self.headers = envs.get_headers()
 
     def get_aluno_by_id(self):
         response = requests.get(self.url, headers=self.headers)
@@ -23,12 +23,13 @@ class RequestData:
         data = response.json()
         return data
 
-# Essa fixture é responsável por criar uma instância da classe RequestData
+# Essa fixture(fixture no pytest é um recurso que permite criar um objeto que será utilizado em todos os testes) é responsável por criar uma instância da classe RequestData
+
 @pytest.fixture
 def req_data():
     return RequestData()
 
-# Essa função é responsável por testar a função get_aluno_by_id
+# Funcao para testar a funcao get_aluno_by_id
 def test_get_aluno_by_id(req_data):
     data = req_data.get_aluno_by_id()
     
@@ -45,6 +46,7 @@ def test_get_aluno_by_id(req_data):
 
 
 
-if __name__ == "__main__":
-    req = RequestData()
-    test_get_aluno_by_id(req)
+#Estrutura para rodar o teste pelo terminal com o comando python test_sample.py 
+# if __name__ == "__main__":
+#     req = RequestData()
+#     test_get_aluno_by_id(req)
