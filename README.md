@@ -15,19 +15,27 @@ Verificar se o sistema retorna corretamente os dados de um aluno específico ao 
 3. Validar se os dados retornados correspondem ao aluno esperado.
 
 ## **Entrada de Dados**
-- **ID do aluno:** `12345` (Ex de ID)
+- **ID do aluno:** `1` (Ex de ID)
 
 ## **Resultado Esperado**
 - O sistema deve retornar um código **200 OK**.
 - O corpo da resposta deve conter os detalhes corretos do aluno, como:
   ```json
     {
-    "id": 0,
-    "academic_id": "string",
-    "name": "string",
-    "email": "string",
-    "date_of_birth": "2025-03-20",
-    "contact_phone": "string"
+        "data": [
+            {
+            "id": "1",
+            "nome": "Nome do Aluno",
+            "data_nascimento": "AAAA-MM-DDTHH:MM:SS.SSSZ",
+            "responsavel_nome": "Nome do Responsável",
+            "responsavel_tipo": "Tipo de Responsável",
+            "responsavel_email": "email@exemplo.com",
+            "responsavel_telefone": "+55 XX XXXXX-XXXX",
+            "atendimento_unidade_anterior": true,
+            "mais_casos_familia": false,
+            "observacoes_casos_familia": "Observações sobre casos na família"
+            }
+        ]
     }
   ```
 
